@@ -4,8 +4,9 @@ const express = require("express");
 
 const router = express.Router();
 
-const userController = require("../controllers/user.controller.ts");
+const { register, login } = require("../controllers/user.controller.ts");
 
-router.get("/login", userController);
+router.get("/register", register);
+router.get("/login", login);
 
 module.exports = router;
