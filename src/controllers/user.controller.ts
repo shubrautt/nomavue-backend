@@ -1,8 +1,8 @@
-import type e = require("express");
+import { type Request, type Response } from "express";
 
-const { createUser } = require("../services/user.service");
+import { createUser } from "../services/user.service.js";
 
-const register = async (req: e.Request, res: e.Response) => {
+const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
 
@@ -25,13 +25,13 @@ const register = async (req: e.Request, res: e.Response) => {
   }
 };
 
-const login = (req: e.Request, res: e.Response) => {
+const login = (req: Request, res: Response) => {
   console.log(req.body);
   res.send("Hello from the user controller file!");
 };
 
-const logout = (req: e.Request, res: e.Response) => {
+const logout = (req: Request, res: Response) => {
   res.send("User logged out successfully!");
 };
 
-module.exports = { register, login, logout };
+export { register, login, logout };

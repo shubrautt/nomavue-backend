@@ -1,7 +1,7 @@
-import type e = require("express");
+import { type Request, type Response} from "express";
 
-const helloController = (req: e.Request, res: e.Response) => {
+const helloController = (_: Request, res: Response) => {
   res.send("Hello from the hello controller file!");
 };
 
-module.exports = helloController;
+export default helloController;

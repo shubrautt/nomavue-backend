@@ -1,12 +1,11 @@
-import type e = require("express");
+import express from "express";
 
-const express = require("express");
+import helloRoute from "./routes/hello.route.js";
+import userRoute from "./routes/user.route.js";
+import connectDB from "./db/init.js";
+import dotenv from "dotenv";
 
-const helloRoute = require("./routes/hello.route.ts");
-const userRoute = require("./routes/user.route.ts");
-const connectDB = require("./db/init");
-
-require("dotenv").config();
+dotenv.config();
 
 const app = express();
 const port = 3000;

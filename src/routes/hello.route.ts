@@ -1,11 +1,9 @@
-import type e = require("express");
+import express from "express";
 
-const express = require("express");
+import helloController from "../controllers/hello.controller.js";
 
 const router = express.Router();
 
-const helloController = require("../controllers/hello.controller.ts");
-
 router.get("/", helloController);
 
-module.exports = router;
+export default router;

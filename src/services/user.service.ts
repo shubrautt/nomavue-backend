@@ -1,6 +1,6 @@
-const UserModel = require("../models/user.model");
+import UserModel from "../models/user.model.js";
 
-import type { User } from "../types/user.type";
+import { type User } from "../types/user.type.js";
 
 const generateAccessToken =  async () => {
     // TODO: generate access Token
@@ -16,4 +16,4 @@ const createUser = async ({ name, email, password }: User) => {
     });
 }
 
-module.exports = { createUser, generateAccessToken, validateAccessToken };
+export { createUser, generateAccessToken, validateAccessToken };
