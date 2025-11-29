@@ -1,6 +1,7 @@
 import { type Request, type Response } from "express";
 
 import { createUser } from "../services/user.service.js";
+import UserModel from "../models/user.model.js";
 
 const register = async (req: Request, res: Response) => {
   try {
@@ -13,11 +14,16 @@ const register = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    await createUser({
+    const isUserExists = await UserModel.findOne({ email });
+    if (isUserExists) return res.status(400).json({ message: "User already exists" });
+
+    const user =  await createUser({
       name,
       email,
       password
-    })
+    });
+
+    return res.status(200).json(user);
   } catch {
     return res.status(400).json({ message: "Server Error" });
   }

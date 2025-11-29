@@ -1,9 +1,9 @@
 import express from "express";
+import dotenv from "dotenv";
 
 import helloRoute from "./routes/hello.route.js";
 import userRoute from "./routes/user.route.js";
 import connectDB from "./db/init.js";
-import dotenv from "dotenv";
 
 dotenv.config();
 
