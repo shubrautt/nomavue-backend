@@ -1,14 +1,14 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
-import UserModel from "../models/user.model.js";
-import { type User } from "../types/user.type.js";
+import UserModel from '../models/user.model.js';
+import { type User } from '../types/user.type.js';
 
 const generateAccessToken = async (user: any) => {
   const token = jwt.sign(
     { id: user._id, email: user.email, name: user.name },
     process.env.JWT_SECRET as string,
-    { expiresIn: "1h" }
+    { expiresIn: '1h' }
   );
 
   return {
