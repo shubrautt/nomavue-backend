@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
 import helloRoute from './routes/hello.route.js';
 import userRoute from './routes/user.route.js';
@@ -14,6 +15,7 @@ const startServer = async () => {
   try {
     await connectDB();
     app.use(express.json());
+    app.use(cookieParser());
 
     app.use('/api/hello', helloRoute);
     app.use('/api/user', userRoute);

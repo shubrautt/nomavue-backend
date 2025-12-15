@@ -24,7 +24,17 @@ const register = async (req: Request, res: Response) => {
       password,
     });
 
-    return res.status(200).json(user);
+    res.cookie('token', user.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      maxAge: 15 * 60 * 1000,
+    });
+
+    return res.status(200).json({
+      name: user.name,
+      email: user.email,
+    });
   } catch {
     return res.status(400).json({ message: 'Server Error' });
   }
