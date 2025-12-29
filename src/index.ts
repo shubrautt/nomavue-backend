@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import helloRoute from './routes/hello.route.js';
 import userRoute from './routes/user.route.js';
@@ -14,6 +15,13 @@ const port = 3000;
 const startServer = async () => {
   try {
     await connectDB();
+    app.use(
+      cors({
+        origin: 'http://localhost:5173',
+        methods: 'GET,POST,PUT,DELETE',
+        credentials: true,
+      })
+    );
     app.use(express.json());
     app.use(cookieParser());
 
