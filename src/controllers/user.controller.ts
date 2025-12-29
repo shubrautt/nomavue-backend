@@ -26,9 +26,9 @@ const register = async (req: Request, res: Response) => {
 
     res.cookie('token', user.token, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      maxAge: 15 * 60 * 1000,
+      secure: false,
+      sameSite: 'lax',
+      maxAge: 24 * 60 * 60 * 1000,
     });
 
     return res.status(200).json({
