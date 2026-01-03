@@ -99,6 +99,7 @@ const verify = (req: Request, res: Response) => {
 
     const user = validateAccessToken(token);
     if (!user) {
+      res.clearCookie('token');
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
