@@ -5,12 +5,13 @@ import cors from 'cors';
 
 import helloRoute from './routes/hello.route.js';
 import userRoute from './routes/user.route.js';
+import timelineRoute from './routes/timeline.route.js';
 import connectDB from './db/init.js';
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 3003;
 
 const startServer = async () => {
   try {
@@ -27,6 +28,7 @@ const startServer = async () => {
 
     app.use('/api/hello', helloRoute);
     app.use('/api/user', userRoute);
+    app.use('/api/timeline', timelineRoute);
 
     app.listen(port, () => {
       console.log(`Server is running at http://localhost:${port}`);
