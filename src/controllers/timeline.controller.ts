@@ -41,9 +41,6 @@ const validateTimelineInput = (body: any, files: any) => {
   if (!body.lat || !body.lng || !body.name || !body.userId) {
     return { isValid: false, error: 'Missing required fields' };
   }
-  if (typeof body.lat !== 'number' || typeof body.lng !== 'number') {
-    return { isValid: false, error: 'Coordinates must be numbers' };
-  }
   if (body.lat < -90 || body.lat > 90 || body.lng < -180 || body.lng > 180) {
     return { isValid: false, error: 'Invalid coordinate range' };
   }
